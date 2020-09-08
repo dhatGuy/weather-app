@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const Container = styled.div`
+const Container = styled.form`
   display: flex;
   justify-content: center;
   margin: 10px 0;
@@ -23,15 +23,24 @@ const Button = styled.button`
   background: #00005c;
   border: 1px solid #000000;
   border-radius: 5px;
-  color: #ffdcb4;
+  color: #fff;
   width: 75px;
+
+  &:hover {
+    color: #ffdcb4;
+  }
 `;
 
-const Search = (props) => {
+const Search = ({ handleChange, handleSearch, input }) => {
   return (
-    <Container>
-      <Input placeholder="Enter a location here" />
-      <Button>search</Button>
+    <Container onSubmit={handleSearch}>
+      <Input
+        type="search"
+        value={input}
+        onChange={handleChange}
+        placeholder="Enter a location here"
+      />
+      <Button type="submit">search</Button>
     </Container>
   );
 };

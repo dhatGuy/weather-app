@@ -9,12 +9,12 @@ const Container = styled.div`
   background-color: #00005c;
   position: relative;
   height: 50px;
+  color: #ffdcb4;
 `;
 
 const H1 = styled.span`
   font-weight: bold;
   font-size: 21px;
-  color: #ffdcb4;
 `;
 
 const Header = (props) => {
