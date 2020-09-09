@@ -7,6 +7,7 @@ import MoreInfo from "./MoreInfo";
 import WeatherIcon from "./WeatherIcon";
 import background from "../assets/background.png";
 
+const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
 const Container = styled.div`
   background: #6a097d;
   border-radius: 10px;
@@ -48,7 +49,7 @@ class Main extends Component {
 
   getForecast = async () => {
     const request = await fetch(
-      `https://api.openweathermap.org/data/2.5/forecast?q=${this.state.inputValue}&appid=f45fc1fcaf4e0ee6674488490ef60bf2&units=metric`
+      `https://api.openweathermap.org/data/2.5/forecast?q=${this.state.inputValue}&appid=${API_KEY}&units=metric`
     );
 
     const data = await request.json();
@@ -67,11 +68,11 @@ class Main extends Component {
   loadCurrentWeather = async (lat, lon) => {
     this.setState({ loading: true });
     const req = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=f45fc1fcaf4e0ee6674488490ef60bf2&units=metric`
+      `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`
     );
 
     const req2 = await fetch(
-      `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=f45fc1fcaf4e0ee6674488490ef60bf2&units=metric`
+      `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`
     );
 
     let res = await req.json();
@@ -118,7 +119,7 @@ class Main extends Component {
     e.preventDefault();
     this.getForecast();
     let req = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${this.state.inputValue}&appid=f45fc1fcaf4e0ee6674488490ef60bf2&units=metric`
+      `https://api.openweathermap.org/data/2.5/weather?q=${this.state.inputValue}&appid=${API_KEY}&units=metric`
     );
     let res = await req.json();
     console.log(res);
