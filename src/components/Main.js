@@ -28,6 +28,7 @@ const LoaderContainer = styled.div`
 const Weather = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   min-height: 90%;
   border-radius: 10px;
@@ -39,13 +40,14 @@ const Weather = styled.div`
 class Main extends Component {
   state = {
     inputValue: "",
-    weather: {},
+    weather: null,
     time: 0,
     location: "",
-    info: {},
+    info: null,
     denied: false,
     loading: true,
     error: false,
+    errorMsg: "",
     forecast: null,
   };
 
@@ -61,15 +63,18 @@ class Main extends Component {
     );
 
     const data = await request.json();
-    const list = [
-      data.list[0],
-      data.list[8],
-      data.list[16],
-      data.list[24],
-      data.list[32],
-    ];
-    this.setState({ forecast: list });
-    console.log(data);
+    if (data.cod === "200") {
+      const list = [
+        data.list[0],
+        data.list[8],
+        data.list[16],
+        data.list[24],
+        data.list[32],
+      ];
+      this.setState({ forecast: list, error: false, errorMsg: "" });
+    } else {
+      this.setState({ errorMsg: data.message, loading: false, error: true });
+    }
     return data;
   };
 
@@ -93,7 +98,6 @@ class Main extends Component {
       res2.list[24],
       res2.list[32],
     ];
-    console.log(res2);
 
     if (res.cod === 200) {
       this.setState({
@@ -104,11 +108,14 @@ class Main extends Component {
         forecast: list,
         error: false,
         loading: false,
+        errorMsg: "",
       });
     } else {
+      console.log(res);
       this.setState({
         loading: false,
         error: true,
+        errorMsg: res.message,
       });
     }
   };
@@ -140,6 +147,7 @@ class Main extends Component {
         error: false,
         loading: false,
         inputValue: "",
+        denied: false,
       });
     } else {
       this.setState({
@@ -156,7 +164,6 @@ class Main extends Component {
   };
   componentDidMount() {
     if ("geolocation" in navigator) {
-      console.log("Available");
       this.loadWeather();
     } else {
       console.log("Not available");
@@ -172,6 +179,9 @@ class Main extends Component {
       loading,
       inputValue,
       forecast,
+      errorMsg,
+      error,
+      denied,
     } = this.state;
     if (loading) {
       return (
@@ -186,20 +196,28 @@ class Main extends Component {
           input={inputValue}
           handleSearch={this.handleSearch}
           handleChange={this.handleChange}
+          error={error}
+          errorMsg={errorMsg}
         />
-        <Weather>
-          <WeatherIcon condition={weather.icon} />
-          <Info
-            time={time}
-            location={location}
-            temp={info.temp}
-            description={weather.description}
-          />
-          <MoreInfo info={info} />
-          <div style={{ display: "flex" }}>
-            <ForecastCard forecast={forecast} />
-          </div>
-        </Weather>
+        {denied ? (
+          <Weather>
+            <p>Permission denied</p>
+          </Weather>
+        ) : (
+          <Weather>
+            <WeatherIcon condition={weather.icon} />
+            <Info
+              time={time}
+              location={location}
+              temp={info.temp}
+              description={weather.description}
+            />
+            <MoreInfo info={info} />
+            <div style={{ display: "flex" }}>
+              <ForecastCard forecast={forecast} />
+            </div>
+          </Weather>
+        )}
       </Container>
     );
   }
