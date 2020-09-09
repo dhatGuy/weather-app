@@ -5,6 +5,7 @@ import Search from "./Search";
 import ForecastCard from "./ForecastCard";
 import MoreInfo from "./MoreInfo";
 import WeatherIcon from "./WeatherIcon";
+import Loader from "react-loader-spinner";
 import background from "../assets/background.png";
 
 const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
@@ -15,6 +16,13 @@ const Container = styled.div`
   position: relative;
   margin: 10px auto;
   flex: 1;
+`;
+
+const LoaderContainer = styled.div`
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const Weather = styled.div`
@@ -165,7 +173,13 @@ class Main extends Component {
       inputValue,
       forecast,
     } = this.state;
-    if (loading) return null;
+    if (loading) {
+      return (
+        <LoaderContainer>
+          <Loader type="TailSpin" color="#00005c" height={100} width={100} />
+        </LoaderContainer>
+      );
+    }
     return (
       <Container>
         <Search

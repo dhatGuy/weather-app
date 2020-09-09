@@ -1,6 +1,5 @@
 import React from "react";
-import styled from "styled-components";
-import ReactAnimatedWeather from "react-animated-weather";
+// import styled from "styled-components";
 import {
   WiNightClear,
   WiDaySunny,
@@ -15,7 +14,6 @@ import {
   WiNightThunderstorm,
   WiDaySnow,
   WiNightSnow,
-  WiNightAltCloudy,
   WiDayCloudyHigh,
   WiNightAltCloudyHigh,
   WiDayFog,

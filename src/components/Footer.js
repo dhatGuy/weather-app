@@ -6,10 +6,10 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   background-color: #00005c;
-  /* position: absolute;
+  position: sticky;
   width: 100%;
-  bottom: 0; */
-  height: 30px;
+  bottom: 0;
+  height: 50px;
   color: #ffdcb4;
 
   a {
