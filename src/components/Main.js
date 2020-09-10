@@ -205,7 +205,11 @@ class Main extends Component {
           </Weather>
         ) : (
           <Weather>
-            <WeatherIcon condition={weather.icon} />
+            <WeatherIcon
+              position="flex-end"
+              condition={weather.icon}
+              size="8em"
+            />
             <Info
               time={time}
               location={location}
@@ -213,9 +217,7 @@ class Main extends Component {
               description={weather.description}
             />
             <MoreInfo info={info} />
-            <div style={{ display: "flex" }}>
-              <ForecastCard forecast={forecast} />
-            </div>
+            <ForecastCard forecast={forecast} />
           </Weather>
         )}
       </Container>
