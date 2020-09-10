@@ -25,61 +25,61 @@ const WeatherIcon = ({ condition, size, position }) => {
   let icon = "";
   switch (condition) {
     case "01d":
-      icon = <WiDaySunny size={size} />;
+      icon = <WiDaySunny color="#ffdcb4" size={size} />;
       break;
     case "01n":
-      icon = <WiNightClear size={size} />;
+      icon = <WiNightClear color="#ffdcb4" size={size} />;
       break;
     case "02d":
-      icon = <WiDayCloudy size={size} />;
+      icon = <WiDayCloudy color="#ffdcb4" size={size} />;
       break;
     case "02n":
-      icon = <WiNightCloudy size={size} />;
+      icon = <WiNightCloudy color="#ffdcb4" size={size} />;
       break;
     case "03d":
-      icon = <WiCloud size={size} />;
+      icon = <WiCloud color="#ffdcb4" size={size} />;
       break;
     case "03n":
-      icon = <WiCloud size={size} />;
+      icon = <WiCloud color="#ffdcb4" size={size} />;
       break;
     case "04d":
-      icon = <WiDayCloudyHigh size={size} />;
+      icon = <WiDayCloudyHigh color="#ffdcb4" size={size} />;
       break;
     case "04n":
-      icon = <WiNightAltCloudyHigh size={size} />;
+      icon = <WiNightAltCloudyHigh color="#ffdcb4" size={size} />;
       break;
     case "09d":
-      icon = <WiDayShowers size={size} />;
+      icon = <WiDayShowers color="#ffdcb4" size={size} />;
       break;
     case "09n":
-      icon = <WiNightShowers size={size} />;
+      icon = <WiNightShowers color="#ffdcb4" size={size} />;
       break;
     case "10d":
-      icon = <WiDayRain size={size} />;
+      icon = <WiDayRain color="#ffdcb4" size={size} />;
       break;
     case "10n":
-      icon = <WiNightRain size={size} />;
+      icon = <WiNightRain color="#ffdcb4" size={size} />;
       break;
     case "11d":
-      icon = <WiDayThunderstorm size={size} />;
+      icon = <WiDayThunderstorm color="#ffdcb4" size={size} />;
       break;
     case "11n":
-      icon = <WiNightThunderstorm size={size} />;
+      icon = <WiNightThunderstorm color="#ffdcb4" size={size} />;
       break;
     case "13d":
-      icon = <WiDaySnow size={size} />;
+      icon = <WiDaySnow color="#ffdcb4" size={size} />;
       break;
     case "13n":
-      icon = <WiNightSnow size={size} />;
+      icon = <WiNightSnow color="#ffdcb4" size={size} />;
       break;
     case "50d":
-      icon = <WiDayFog size={size} />;
+      icon = <WiDayFog color="#ffdcb4" size={size} />;
       break;
     case "50n":
-      icon = <WiNightFog size={size} />;
+      icon = <WiNightFog color="#ffdcb4" size={size} />;
       break;
     default:
-      icon = <WiNa size="6em" />;
+      icon = <WiNa color="#ffdcb4" size="6em" />;
   }
 
   return <div style={{ alignSelf: position || "inherit" }}>{icon}</div>;

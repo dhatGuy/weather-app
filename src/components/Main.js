@@ -32,9 +32,9 @@ const Weather = styled.div`
   align-items: center;
   min-height: 90%;
   border-radius: 10px;
-  background-image: url(${background});
+  box-shadow: inset 0 0 0 100vw rgba(106, 9, 125, 0.6);
+  background: url(${background}) center center no-repeat;
   background-size: cover;
-  box-shadow: -12px 12px 24px #41054c, 12px -12px 24px #930dae;
 `;
 
 class Main extends Component {
