@@ -6,6 +6,8 @@ const Container = styled.div`
   color: #ffdcb4;
   background-color: #00005c;
   padding: 0 40px 0 10px;
+  position: relative;
+  bottom: 0;
 
   p {
     line-height: 10px;

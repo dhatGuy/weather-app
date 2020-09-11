@@ -7,13 +7,15 @@ const InfoContainer = styled.div`
   margin-left: 20px;
 `;
 
-const Info = ({ location, time, description, temp }) => {
+const Info = ({ location, time, description, temp, main }) => {
   return (
     <InfoContainer>
       <span>{location}</span> <br />
       <span style={{ fontSize: "85px", fontWeight: "bold" }}>
         {Math.round(temp)}°C
       </span>{" "}
+      <br />
+      <span style={{ textTransform: "capitalize" }}>{main}</span>
       <br />
       <span style={{ textTransform: "capitalize" }}>{description}</span>
     </InfoContainer>

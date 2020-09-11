@@ -14,10 +14,14 @@ const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
 const Container = styled.div`
   background: #6a097d;
   border-radius: 10px;
-  width: 95%;
+  width: 60%;
   position: relative;
   margin: 10px auto;
   flex: 1;
+
+  @media (max-width: 992px) {
+    width: 95%;
+  }
 `;
 
 const LoaderContainer = styled.div`
@@ -30,8 +34,9 @@ const LoaderContainer = styled.div`
 const Weather = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  margin-top: 10px;
   min-height: 90%;
   border-radius: 10px;
   box-shadow: inset 0 0 0 100vw rgba(106, 9, 125, 0.6);
@@ -212,13 +217,14 @@ class Main extends Component {
               <WeatherIcon
                 position="flex-end"
                 condition={weather.icon}
-                size="8em"
+                size="12em"
               />
               <Info
                 time={time}
                 location={location}
                 temp={info.temp}
                 description={weather.description}
+                main={weather.main}
               />
               <MoreInfo info={info} />
               <ForecastCard forecast={forecast} />

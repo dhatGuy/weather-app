@@ -5,7 +5,7 @@ const Container = styled.form`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 10px 0;
+  margin-top: 10px;
 `;
 
 const Input = styled.input`
@@ -23,19 +23,21 @@ const Button = styled.button`
   background: #00005c;
   border: 1px solid #000000;
   border-radius: 5px;
-  color: #fff;
-  padding: 5px 0;
+  color: #ffdcb4;
+  padding: 7px 0;
   width: 75px;
 
   &:hover {
-    color: #ffdcb4;
+    background: #00007c;
+    color: white;
   }
 `;
 
 const ErrorMsg = styled.p`
   font-size: 12px;
   margin: 0;
-  color: white;
+  text-align: center;
+  color: #ffdcb4;
 `;
 
 const Search = ({ handleChange, handleSearch, input, error, errorMsg }) => {
@@ -49,10 +51,10 @@ const Search = ({ handleChange, handleSearch, input, error, errorMsg }) => {
             onChange={handleChange}
             placeholder="Enter a location here"
           />
-          {error ? <ErrorMsg>{errorMsg}</ErrorMsg> : null}
         </div>
-        <Button type="submit">search</Button>
+        <Button type="submit">search</Button> <br /> <br />
       </Container>
+      {error ? <ErrorMsg>{errorMsg}</ErrorMsg> : null}
     </>
   );
 };

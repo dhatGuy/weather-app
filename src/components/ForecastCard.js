@@ -5,7 +5,7 @@ import WeatherIcon from "./WeatherIcon";
 
 const Card = styled.div`
   background-color: #c060a1;
-  flex-basis: 150px;
+  flex-basis: 350px;
   display: flex;
   flex-direction: column;
   justify-content: center;
