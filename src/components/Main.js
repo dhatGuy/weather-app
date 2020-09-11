@@ -7,6 +7,8 @@ import MoreInfo from "./MoreInfo";
 import WeatherIcon from "./WeatherIcon";
 import Loader from "react-loader-spinner";
 import background from "../assets/background.png";
+import Footer from "./Footer";
+import Header from "./Header";
 
 const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
 const Container = styled.div`
@@ -191,36 +193,40 @@ class Main extends Component {
       );
     }
     return (
-      <Container>
-        <Search
-          input={inputValue}
-          handleSearch={this.handleSearch}
-          handleChange={this.handleChange}
-          error={error}
-          errorMsg={errorMsg}
-        />
-        {denied ? (
-          <Weather>
-            <p>Permission denied</p>
-          </Weather>
-        ) : (
-          <Weather>
-            <WeatherIcon
-              position="flex-end"
-              condition={weather.icon}
-              size="8em"
-            />
-            <Info
-              time={time}
-              location={location}
-              temp={info.temp}
-              description={weather.description}
-            />
-            <MoreInfo info={info} />
-            <ForecastCard forecast={forecast} />
-          </Weather>
-        )}
-      </Container>
+      <>
+        <Header />
+        <Container>
+          <Search
+            input={inputValue}
+            handleSearch={this.handleSearch}
+            handleChange={this.handleChange}
+            error={error}
+            errorMsg={errorMsg}
+          />
+          {denied ? (
+            <Weather>
+              <p>Permission denied</p>
+            </Weather>
+          ) : (
+            <Weather>
+              <WeatherIcon
+                position="flex-end"
+                condition={weather.icon}
+                size="8em"
+              />
+              <Info
+                time={time}
+                location={location}
+                temp={info.temp}
+                description={weather.description}
+              />
+              <MoreInfo info={info} />
+              <ForecastCard forecast={forecast} />
+            </Weather>
+          )}
+        </Container>
+        <Footer />
+      </>
     );
   }
 }

@@ -6,7 +6,7 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   background-color: #00005c;
-  height: 50px;
+  height: 35px;
   color: #ffdcb4;
 
   a {
@@ -15,7 +15,7 @@ const Container = styled.div`
   }
 `;
 
-const Footer = (props) => {
+const Footer = () => {
   return (
     <Container>
       <p>
