@@ -30,7 +30,8 @@ const ForecastCard = ({ forecast }) => {
     <Container>
       {forecast.map((data, i) => (
         <Card key={i}>
-          <p>{dayjs.unix(data.dt).format("ddd")}</p>
+          <p>{i === 0 ? "Today" : dayjs.unix(data.dt).format("ddd")}</p>
+          <p>{dayjs.unix(data.dt).format("HH:mm")}</p>
           <WeatherIcon condition={data.weather[0].icon} size={"2em"} />
           <p>{Math.round(data.main.temp)}°C</p>
         </Card>
