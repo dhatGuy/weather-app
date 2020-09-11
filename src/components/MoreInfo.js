@@ -14,11 +14,16 @@ const Container = styled.div`
   }
 `;
 
-const MoreInfo = ({ info }) => {
+const MoreInfo = ({ info, unit }) => {
   return (
     <Container>
       <h3>MORE INFO</h3>
-      <p>Feels like: {Math.round(info.feels_like)}°C</p>
+      <p>
+        Feels like:{" "}
+        {unit === "C"
+          ? `${Math.round(info.feels_like)}°${unit}`
+          : `${Math.round(info.feels_like * (9 / 5) + 32)}°${unit}`}
+      </p>
       <p>Humidity: {Math.round(info.humidity)}% </p>
       <p>Pressure: {Math.round(info.pressure)} hPa </p>
     </Container>

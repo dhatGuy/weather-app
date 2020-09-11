@@ -6,7 +6,7 @@ import ForecastCard from "./ForecastCard";
 import MoreInfo from "./MoreInfo";
 import WeatherIcon from "./WeatherIcon";
 import Loader from "react-loader-spinner";
-import background from "../assets/background.png";
+import background from "../assets/background-min.png";
 import Footer from "./Footer";
 import Header from "./Header";
 
@@ -18,6 +18,7 @@ const Container = styled.div`
   position: relative;
   margin: 10px auto;
   flex: 1;
+  height: 100%;
 
   @media (max-width: 992px) {
     width: 95%;
@@ -37,7 +38,7 @@ const Weather = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-top: 10px;
-  min-height: 90%;
+  /* min-height: 80%; */
   border-radius: 10px;
   box-shadow: inset 0 0 0 100vw rgba(106, 9, 125, 0.6);
   background: url(${background}) center center no-repeat;
@@ -56,6 +57,16 @@ class Main extends Component {
     error: false,
     errorMsg: "",
     forecast: null,
+    unit: "C",
+  };
+
+  changeUnit = (e) => {
+    this.setState(
+      {
+        unit: e.target.value,
+      },
+      () => console.log(this.state.unit)
+    );
   };
 
   getPosition = () => {
@@ -85,7 +96,7 @@ class Main extends Component {
     return data;
   };
 
-  loadCurrentWeather = async (lat, lon) => {
+  loadLocationWeather = async (lat, lon) => {
     this.setState({ loading: true });
     const req = await fetch(
       `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`
@@ -131,7 +142,7 @@ class Main extends Component {
     this.getPosition()
       .then((position) => {
         const { longitude, latitude } = position.coords;
-        this.loadCurrentWeather(latitude, longitude);
+        this.loadLocationWeather(latitude, longitude);
       })
       .catch((err) => this.setState({ denied: true, loading: false }));
   };
@@ -173,7 +184,7 @@ class Main extends Component {
     if ("geolocation" in navigator) {
       this.loadWeather();
     } else {
-      console.log("Not available");
+      alert("Not available. There was error.");
     }
   }
 
@@ -189,6 +200,7 @@ class Main extends Component {
       errorMsg,
       error,
       denied,
+      unit,
     } = this.state;
     if (loading) {
       return (
@@ -205,6 +217,8 @@ class Main extends Component {
             input={inputValue}
             handleSearch={this.handleSearch}
             handleChange={this.handleChange}
+            changeUnit={this.changeUnit}
+            unit={unit}
             error={error}
             errorMsg={errorMsg}
           />
@@ -225,9 +239,11 @@ class Main extends Component {
                 temp={info.temp}
                 description={weather.description}
                 main={weather.main}
+                unit={unit}
+                handleUnit={this.changeUnit}
               />
-              <MoreInfo info={info} />
-              <ForecastCard forecast={forecast} />
+              <MoreInfo info={info} unit={unit} />
+              <ForecastCard unit={unit} forecast={forecast} />
             </Weather>
           )}
         </Container>

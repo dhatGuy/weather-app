@@ -40,7 +40,22 @@ const ErrorMsg = styled.p`
   color: #ffdcb4;
 `;
 
-const Search = ({ handleChange, handleSearch, input, error, errorMsg }) => {
+const RadioBtn = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffdcb4;
+`;
+
+const Search = ({
+  handleChange,
+  handleSearch,
+  input,
+  error,
+  errorMsg,
+  unit,
+  changeUnit,
+}) => {
   return (
     <>
       <Container onSubmit={handleSearch}>
@@ -55,6 +70,30 @@ const Search = ({ handleChange, handleSearch, input, error, errorMsg }) => {
         <Button type="submit">search</Button> <br /> <br />
       </Container>
       {error ? <ErrorMsg>{errorMsg}</ErrorMsg> : null}
+      <RadioBtn>
+        <div>
+          <input
+            type="radio"
+            name="unit"
+            id="celsius"
+            onChange={changeUnit}
+            value="C"
+            checked={unit === "C"}
+          />
+          <label htmlFor="celsius">Celsius</label>
+        </div>
+        <div>
+          <input
+            type="radio"
+            name="unit"
+            id="farenheit"
+            value="F"
+            onChange={changeUnit}
+            checked={unit === "F"}
+          />
+          <label htmlFor="farenheit">Farenheit</label>
+        </div>
+      </RadioBtn>
     </>
   );
 };

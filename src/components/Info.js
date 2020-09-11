@@ -7,12 +7,25 @@ const InfoContainer = styled.div`
   margin-left: 20px;
 `;
 
-const Info = ({ location, time, description, temp, main }) => {
+const Info = ({
+  location,
+  time,
+  description,
+  temp,
+  main,
+  unit,
+  handleUnit,
+}) => {
   return (
     <InfoContainer>
       <span>{location}</span> <br />
-      <span style={{ fontSize: "85px", fontWeight: "bold" }}>
-        {Math.round(temp)}°C
+      <span
+        style={{ fontSize: "85px", fontWeight: "bold" }}
+        onClick={handleUnit}
+      >
+        {unit === "C"
+          ? `${Math.round(temp)}°${unit}`
+          : `${Math.round(temp * (9 / 5) + 32)}°${unit}`}
       </span>{" "}
       <br />
       <span style={{ textTransform: "capitalize" }}>{main}</span>

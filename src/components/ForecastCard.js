@@ -24,7 +24,7 @@ const Container = styled.div`
   width: 100%;
 `;
 
-const ForecastCard = ({ forecast }) => {
+const ForecastCard = ({ forecast, unit }) => {
   if (!forecast) return null;
   return (
     <Container>
@@ -33,7 +33,11 @@ const ForecastCard = ({ forecast }) => {
           <p>{i === 0 ? "Today" : dayjs.unix(data.dt).format("ddd")}</p>
           <p>{dayjs.unix(data.dt).format("HH:mm")}</p>
           <WeatherIcon condition={data.weather[0].icon} size={"2em"} />
-          <p>{Math.round(data.main.temp)}°C</p>
+          <p>
+            {unit === "C"
+              ? `${Math.round(data.main.temp)}°${unit}`
+              : `${Math.round(data.main.temp * (9 / 5) + 32)}°${unit}`}
+          </p>
         </Card>
       ))}
     </Container>
