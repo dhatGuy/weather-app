@@ -38,7 +38,7 @@ const Weather = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-top: 10px;
-  /* min-height: 80%; */
+  min-height: 82%;
   border-radius: 10px;
   box-shadow: inset 0 0 0 100vw rgba(106, 9, 125, 0.6);
   background: url(${background}) center center no-repeat;
@@ -240,7 +240,6 @@ class Main extends Component {
                 description={weather.description}
                 main={weather.main}
                 unit={unit}
-                handleUnit={this.changeUnit}
               />
               <MoreInfo info={info} unit={unit} />
               <ForecastCard unit={unit} forecast={forecast} />

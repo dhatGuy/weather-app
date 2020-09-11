@@ -19,10 +19,7 @@ const Info = ({
   return (
     <InfoContainer>
       <span>{location}</span> <br />
-      <span
-        style={{ fontSize: "85px", fontWeight: "bold" }}
-        onClick={handleUnit}
-      >
+      <span style={{ fontSize: "85px", fontWeight: "bold" }}>
         {unit === "C"
           ? `${Math.round(temp)}°${unit}`
           : `${Math.round(temp * (9 / 5) + 32)}°${unit}`}
