@@ -18,7 +18,7 @@ const Container = styled.div`
   position: relative;
   margin: 10px auto;
   flex: 1;
-  height: 100%;
+  /* height: 100%; */
 
   @media (max-width: 992px) {
     width: 95%;
